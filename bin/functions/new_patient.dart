@@ -2,7 +2,7 @@ import 'dart:io';
 
 import '../classes/patient.dart';
 
-void newPatient(List<Patient> patientsF) {
+void newPatient(Hospital hospital) {
   print('Enter New Patient\n' '##########################################');
 
   int patientID = 0;
@@ -27,7 +27,7 @@ void newPatient(List<Patient> patientsF) {
   String bloodType = stdin.readLineSync()!;
   //end of user input
 
-  patientsF.add(
+  hospital.patients.add(
     Patient(
       patientID: patientID,
       fName: fName,
@@ -43,4 +43,27 @@ void newPatient(List<Patient> patientsF) {
   print('*********************Patient Added*************************');
   print('##########################################');
   //showing patients
+}
+
+void showPatientList(Hospital hospital) {
+  if (hospital.patients.isNotEmpty) {
+    int count = 0;
+
+    for (var item in hospital.patients) {
+      count++;
+      print('************* Pateint $count *************');
+      print('Patient ID : ${item.patientID}');
+      print('First Name : ${item.fName}');
+      print('last name : ${item.lName}');
+      print('Age : ${item.age}');
+      print('Gender : ${item.gender}');
+      print('Adress : ${item.adrees}');
+      print('Phone Number : ${item.phoneNumber}');
+      print('Blood Type : ${item.bloodType}');
+      print('Past Disease : ${item.pastDises}');
+      print('************* Pateint $count Ended *************');
+    }
+  } else {
+    print('************ No Patients Records *************\n');
+  }
 }

@@ -1,3 +1,30 @@
+class Hospital {
+  String name = "Hospital";
+  String address = "Iraq , Erbil";
+
+  List<Patient> patients = [];
+  List<StaffMember> staffMember = [];
+  Hospital({
+    required this.patients,
+    required this.staffMember,
+  });
+}
+
+class StaffMember {
+  String fname;
+  String? lName;
+  int age;
+  String contact;
+  String jobTitle;
+  StaffMember({
+    required this.fname,
+    this.lName,
+    required this.age,
+    required this.contact,
+    required this.jobTitle,
+  });
+}
+
 class Patient {
   String? fName;
   String? lName;
@@ -20,27 +47,19 @@ class Patient {
     this.adrees,
     this.phoneNumber,
   });
+}
 
-  void showPatientList(List<Patient> patiets) {
-    if (patiets.isNotEmpty) {
-      int count = 0;
+class MedicalHistory extends Patient {
+  String condition;
+  String diagnosis;
+  String treatment;
 
-      for (var item in patiets) {
-        count++;
-        print('************* Pateint $count *************');
-        print('Patient ID : ${item.patientID}');
-        print('First Name : ${item.fName}');
-        print('last name : ${item.lName}');
-        print('Age : ${item.age}');
-        print('Gender : ${item.gender}');
-        print('Adress : ${item.adrees}');
-        print('Phone Number : ${item.phoneNumber}');
-        print('Blood Type : ${item.bloodType}');
-        print('Past Disease : ${item.pastDises}');
-        print('************* Pateint $count Ended *************');
-      }
-    } else {
-      print('************ No Patients Records *************\n');
-    }
-  }
+  MedicalHistory({
+    String? fname,
+    String? lname,
+    int? patientID,
+    required this.condition,
+    required this.diagnosis,
+    required this.treatment,
+  }) : super(fName: fname, lName: lname, patientID: patientID);
 }

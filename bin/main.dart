@@ -6,34 +6,31 @@ import 'classes/patient.dart';
 import 'functions/delete_patient.dart';
 import 'functions/menus.dart';
 import 'functions/new_patient.dart';
-import 'functions/patient_diseases.dart';
+
 import 'functions/update_patient.dart';
 
-List<Patient> patientsLists = [];
-
 void main() {
-  Patient patientss = Patient();
+  Hospital hospital = Hospital(patients: [], staffMember: []);
 
   menus();
   print('Your choice');
   int x = int.parse(stdin.readLineSync()!);
 
   if (x == 1) {
-    newPatient(patientsLists);
-    patientss.showPatientList(patientsLists);
+    newPatient(hospital);
+    showPatientList(hospital);
     main();
   } else if (x == 2) {
-    patientss.showPatientList(patientsLists);
+    showPatientList(hospital);
     main();
   } else if (x == 3) {
-    upPatient(patientsLists);
-    patientss.showPatientList(patientsLists);
+    upPatient(hospital);
+
     main();
   } else if (x == 4) {
-    delPatient(patientsLists);
+    delPatient(hospital);
     main();
   } else if (x == 5) {
-    entDisease();
     main();
   } else if (x == 6) {
     print(' ........///........Good Bye ........///........');

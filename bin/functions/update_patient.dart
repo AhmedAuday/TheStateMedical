@@ -2,7 +2,7 @@ import 'dart:io';
 
 import '../classes/patient.dart';
 
-void upPatient(List<Patient> patientList) {
+void upPatient(Hospital hospital) {
   //user input
   print('Enter Patient ID To upadte it : ');
   int patientId = int.parse(stdin.readLineSync()!);
@@ -24,7 +24,7 @@ void upPatient(List<Patient> patientList) {
   String bloodType = stdin.readLineSync()!;
   //end of user input
 
-  for (var item in patientList) {
+  for (var item in hospital.patients) {
     if (item.patientID == patientId) {
       item.fName = fName;
       item.lName = lName;
